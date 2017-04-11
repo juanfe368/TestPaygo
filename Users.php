@@ -1,27 +1,3 @@
-<?php
-
-    if($_POST['hidVal']==1){
-        $ruta  = dirname(__FILE__)."/php/";
-        include_once $ruta.'ImportFile.php';
-        $importFile = new ImportFile();
-        $respuestImport = $importFile->importFileCsv($ruta);
-        if($respuestImport){
-            ?>
-                <script>
-                    alert("Importaciòn Exitosa");
-                </script>
-            <?php
-        }
-        else{
-            ?>
-                <script>
-                    alert("Ha ocurrido un problema en la importación por favor vuelva a intentarlo");
-                </script>
-            <?php
-        }
-    }
-
-?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
