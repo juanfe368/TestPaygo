@@ -61,18 +61,23 @@ class ImportFile {
         return $respuestInsert;
     }
     
+    /**
+     * Función que permite obtener a los usuarios
+     * @param String $ruta cadena de la ruta raiz del directorio
+     * @return mysql_query respuesta de query
+     */
     function getUsers($ruta){
         include_once $ruta.'DataBase.php';
         $conexion = new DataBase();
         $conexion->connectDataBase();
         
-        $numReg = $_POST['inputNumberRegistros'];
+        $numReg = $_GET['cantReg'];
         $limitSql = "";
         if($numReg!=0){
             $limitSql = "LIMIT $numReg";
         }
         
-        $orderUsers = $_POST['inputRadOrdern'];
+        $orderUsers = $_GET['order'];
         $orderSql = "";
         if($orderUsers=='asc'){
             $orderSql = " ORDER BY idtbl_users ASC";
@@ -89,7 +94,8 @@ class ImportFile {
                             `tbl_users`
                             $orderSql
                             $limitSql;";
-        return $selectUsers;
+        $respuestQuery = mysql_query($selectUsers);
+        return $respuestQuery;
     }
     
 }

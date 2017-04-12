@@ -11,6 +11,8 @@
                     alert("Importaciòn Exitosa");
                 </script>
             <?php
+                header('Location: users.php?cantReg='.$_POST['inputNumberRegistros'].'&order='.$_POST['inputRadOrdern']);
+                exit;
         }
         else{
             ?>
